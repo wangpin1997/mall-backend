@@ -1,0 +1,20 @@
+spring:
+  banner:
+    location: banner.txt
+  application:
+    name: backend-server
+
+  datasource:
+    driver-class-name: com.alibaba.druid.proxy.DruidDriver
+    platform: mysql
+    continue-on-error: false
+    url: jdbc:mysql://wangpin-ali.mysql.rds.aliyuncs.com:3306/mall?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&tinyInt1isBit=false
+    password: Wangpin123
+    username: root
+
+server:
+  port: 8083
+
+
+
+

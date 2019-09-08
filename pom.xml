@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>cn.wpin.mall</groupId>
+        <artifactId>mall-base-dependency</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <!--relativePath不填默认是../pom.xml-->
+<!--        <relativePath>../mall-base-dependency/pom.xml</relativePath>-->
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>mall-backend</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>backend-entity</module>
+        <module>backend-server</module>
+    </modules>
+    <name>mall-backend</name>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
+    </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://localhost:8081/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <scm>
+        <url>https://github.com/wangpin1997/mall.git</url>
+        <connection>scm:git:https://github.com/wangpin1997/mall.git</connection>
+        <developerConnection>scm:git:https://github.com/wangpin1997/mall.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    
+</project>
