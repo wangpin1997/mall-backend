@@ -11,5 +11,13 @@
 
     <artifactId>backend-entity</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.wpin.mall</groupId>
+            <artifactId>mall-base-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

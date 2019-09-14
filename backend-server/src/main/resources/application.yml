@@ -1,20 +1,23 @@
-spring:
-  banner:
-    location: banner.txt
-  application:
-    name: backend-server
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
+    accessKeyId: LTAI4FwwWJ8rwxS4rDMrt6HM # 访问身份验证中用到用户标识
+    accessKeySecret: ghERtI0aoHqazbsAXFTvA2gM4jA88Q # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: wpin-oss # oss的存储空间
+    policy:
+      expire: 300 # 签名有效期(S)
+    maxSize: 10 # 上传文件大小(M)
+    callback: http://localhost:8883/aliyun/oss/callback # 文件上传成功后的回调地址
+    dir:
+      prefix: mall/images/ # 上传文件夹路径前缀
 
-  datasource:
-    driver-class-name: com.alibaba.druid.proxy.DruidDriver
-    platform: mysql
-    continue-on-error: false
-    url: jdbc:mysql://wangpin-ali.mysql.rds.aliyuncs.com:3306/mall?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&tinyInt1isBit=false
-    password: Wangpin123
-    username: root
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
 
-server:
-  port: 8083
-
-
-
-
+logging:
+  level:
+    root: info #日志配置DEBUG,INFO,WARN,ERROR
+    cn.wpin.mall: debug
