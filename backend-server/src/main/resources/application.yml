@@ -1,12 +1,3 @@
-spring:
-  data:
-    elasticsearch:
-      cluster-nodes: 127.0.0.1:9200
-      repositories:
-        enabled: true
-
-
-
 ribbon:
   ReadTimeout : 60000
   ConnectTimeout : 60000

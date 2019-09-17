@@ -100,6 +100,11 @@
             <version>${parent.version}</version>
         </dependency>
         <dependency>
+            <groupId>cn.wpin.mall</groupId>
+            <artifactId>es-client</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>3.1.0</version>
