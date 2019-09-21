@@ -9,9 +9,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * @author wangpin
  */
-@SpringBootApplication(scanBasePackages = "cn.wpin.mall")
+@SpringBootApplication(scanBasePackages = "cn.wpin.mall.backend")
 @EnableDiscoveryClient
-@EnableFeignClients("cn.wpin.mall")
+@EnableFeignClients("cn.wpin.mall.client")
 public class BackendApplication {
 
     public static void main(String[] args) {
