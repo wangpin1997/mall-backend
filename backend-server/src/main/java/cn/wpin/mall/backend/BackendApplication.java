@@ -3,6 +3,7 @@ package cn.wpin.mall.backend;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -12,6 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(scanBasePackages = "cn.wpin.mall.backend")
 @EnableDiscoveryClient
 @EnableFeignClients("cn.wpin.mall.client")
+@EnableCircuitBreaker
 public class BackendApplication {
 
     public static void main(String[] args) {
