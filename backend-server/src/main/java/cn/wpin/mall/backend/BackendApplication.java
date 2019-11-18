@@ -13,7 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(scanBasePackages = "cn.wpin.mall.backend")
 @EnableDiscoveryClient
 @EnableFeignClients("cn.wpin.mall.client")
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 public class BackendApplication {
 
     public static void main(String[] args) {
