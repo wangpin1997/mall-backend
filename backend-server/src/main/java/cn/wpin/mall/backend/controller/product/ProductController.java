@@ -31,7 +31,7 @@ public class ProductController {
 
     @ApiOperation("创建商品")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('product:create')")
+    @PreAuthorize("hasAuthority('pms:product:create')")
     public CommonResult create(@RequestBody ProductParam productParam, BindingResult bindingResult) {
         int count = productService.create(productParam);
         if (count > 0) {
@@ -43,7 +43,7 @@ public class ProductController {
 
     @ApiOperation("根据商品id获取商品编辑信息")
     @RequestMapping(value = "/updateInfo/{id}", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('product:read')")
+    @PreAuthorize("hasAuthority('pms:product:read')")
     public CommonResult<ProductResult> getUpdateInfo(@PathVariable Long id) {
         ProductResult productResult = productService.getUpdateInfo(id);
         return CommonResult.success(productResult);
@@ -51,7 +51,7 @@ public class ProductController {
 
     @ApiOperation("更新商品")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('product:update')")
+    @PreAuthorize("hasAuthority('pms:product:update')")
     public CommonResult update(@PathVariable Long id, @RequestBody ProductParam productParam, BindingResult bindingResult) {
         int count = productService.update(id, productParam);
         if (count > 0) {
@@ -63,7 +63,7 @@ public class ProductController {
 
     @ApiOperation("查询商品")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('product:read')")
+    @PreAuthorize("hasAuthority('pms:product:read')")
     public CommonResult<CommonPage<Product>> getList(ProductQueryParam productQueryParam,
                                                      @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                      @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
@@ -80,7 +80,7 @@ public class ProductController {
 
     @ApiOperation("批量修改审核状态")
     @RequestMapping(value = "/update/verifyStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('product:update')")
+    @PreAuthorize("hasAuthority('pms:product:update')")
     public CommonResult updateVerifyStatus(@RequestParam("ids") List<Long> ids,
                                            @RequestParam("verifyStatus") Integer verifyStatus,
                                            @RequestParam("detail") String detail) {
@@ -94,7 +94,7 @@ public class ProductController {
 
     @ApiOperation("批量上下架")
     @RequestMapping(value = "/update/publishStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('product:update')")
+    @PreAuthorize("hasAuthority('pms:product:update')")
     public CommonResult updatePublishStatus(@RequestParam("ids") List<Long> ids,
                                             @RequestParam("publishStatus") Integer publishStatus) {
         int count = productService.updatePublishStatus(ids, publishStatus);
@@ -107,7 +107,7 @@ public class ProductController {
 
     @ApiOperation("批量推荐商品")
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('product:update')")
+    @PreAuthorize("hasAuthority('pms:product:update')")
     public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids,
                                               @RequestParam("recommendStatus") Integer recommendStatus) {
         int count = productService.updateRecommendStatus(ids, recommendStatus);
@@ -120,7 +120,7 @@ public class ProductController {
 
     @ApiOperation("批量设为新品")
     @RequestMapping(value = "/update/newStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('product:update')")
+    @PreAuthorize("hasAuthority('pms:product:update')")
     public CommonResult updateNewStatus(@RequestParam("ids") List<Long> ids,
                                         @RequestParam("newStatus") Integer newStatus) {
         int count = productService.updateNewStatus(ids, newStatus);
@@ -133,7 +133,7 @@ public class ProductController {
 
     @ApiOperation("批量修改删除状态")
     @RequestMapping(value = "/update/deleteStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('product:delete')")
+    @PreAuthorize("hasAuthority('pms:product:delete')")
     public CommonResult updateDeleteStatus(@RequestParam("ids") List<Long> ids,
                                            @RequestParam("deleteStatus") Integer deleteStatus) {
         int count = productService.updateDeleteStatus(ids, deleteStatus);

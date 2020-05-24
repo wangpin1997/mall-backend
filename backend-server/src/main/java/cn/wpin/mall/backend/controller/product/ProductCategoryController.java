@@ -31,7 +31,7 @@ public class ProductCategoryController {
 
     @ApiOperation("添加产品分类")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('productCategory:create')")
+    @PreAuthorize("hasAuthority('pms:productCategory:create')")
     public CommonResult create(@Validated @RequestBody ProductCategoryParam productCategoryParam,
                                BindingResult result) {
         int count = productCategoryService.create(productCategoryParam);
@@ -44,7 +44,7 @@ public class ProductCategoryController {
 
     @ApiOperation("修改商品分类")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('productCategory:update')")
+    @PreAuthorize("hasAuthority('pms:productCategory:update')")
     public CommonResult update(@PathVariable Long id,
                                @Validated
                                @RequestBody ProductCategoryParam productCategoryParam,
@@ -59,7 +59,7 @@ public class ProductCategoryController {
 
     @ApiOperation("分页查询商品分类")
     @RequestMapping(value = "/list/{parentId}", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('productCategory:read')")
+    @PreAuthorize("hasAuthority('pms:productCategory:read')")
     public CommonResult<CommonPage<ProductCategory>> getList(@PathVariable Long parentId,
                                                              @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                              @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
@@ -69,7 +69,7 @@ public class ProductCategoryController {
 
     @ApiOperation("根据id获取商品分类")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('productCategory:read')")
+    @PreAuthorize("hasAuthority('pms:productCategory:read')")
     public CommonResult<ProductCategory> getItem(@PathVariable Long id) {
         ProductCategory productCategory = productCategoryService.getItem(id);
         return CommonResult.success(productCategory);
@@ -77,7 +77,7 @@ public class ProductCategoryController {
 
     @ApiOperation("删除商品分类")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('productCategory:delete')")
+    @PreAuthorize("hasAuthority('pms:productCategory:delete')")
     public CommonResult delete(@PathVariable Long id) {
         int count = productCategoryService.delete(id);
         if (count > 0) {
@@ -89,7 +89,7 @@ public class ProductCategoryController {
 
     @ApiOperation("修改导航栏显示状态")
     @RequestMapping(value = "/update/navStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('productCategory:update')")
+    @PreAuthorize("hasAuthority('pms:productCategory:update')")
     public CommonResult updateNavStatus(@RequestParam("ids") List<Long> ids, @RequestParam("navStatus") Integer navStatus) {
         int count = productCategoryService.updateNavStatus(ids, navStatus);
         if (count > 0) {
@@ -101,7 +101,7 @@ public class ProductCategoryController {
 
     @ApiOperation("修改显示状态")
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('productCategory:update')")
+    @PreAuthorize("hasAuthority('pms:productCategory:update')")
     public CommonResult updateShowStatus(@RequestParam("ids") List<Long> ids, @RequestParam("showStatus") Integer showStatus) {
         int count = productCategoryService.updateShowStatus(ids, showStatus);
         if (count > 0) {
@@ -113,7 +113,7 @@ public class ProductCategoryController {
 
     @ApiOperation("查询所有一级分类及子分类")
     @RequestMapping(value = "/list/withChildren", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('productCategory:read')")
+    @PreAuthorize("hasAuthority('pms:productCategory:read')")
     public CommonResult<List<ProductCategoryWithChildrenItem>> listWithChildren() {
         List<ProductCategoryWithChildrenItem> list = productCategoryService.listWithChildren();
         return CommonResult.success(list);

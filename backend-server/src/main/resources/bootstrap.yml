@@ -8,10 +8,10 @@ spring:
       config:
         server-addr: config.wpin.store:80
         name: backend
-        shared-dataids: nacos.yml,db.user.yml,oss.yml,jwt.yml #如是eureka注册，将nacos换成对应的eureka即可
+        shared-dataids: nacos.yml,db.user.yml,oss.yml,jwt.yml,admin.yml #如是eureka注册，将nacos换成对应的eureka即可
         file-extension: yml
         namespace: 0abd1eef-7bdb-433d-967f-3c499a61998f
-        refreshable-dataids: nacos.yml,db.user.yml,oss.yml,jwt.yml #如是eureka注册，将nacos换成对应的eureka即可
+        refreshable-dataids: nacos.yml,db.user.yml,oss.yml,jwt.yml,admin.yml #如是eureka注册，将nacos换成对应的eureka即可
         cluster-name: cluster
   profiles:
     active: test

@@ -30,17 +30,17 @@ public class BrandController {
 
     @ApiOperation(value = "获取全部品牌列表")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('brand:read')")
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     public CommonResult<List<Brand>> getList() {
         return CommonResult.success(brandService.listAllBrand());
     }
 
     @ApiOperation(value = "添加品牌")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('brand:create')")
-    public CommonResult create(@Validated @RequestBody BrandParam Brand, BindingResult result) {
+    @PreAuthorize("hasAuthority('pms:brand:create')")
+    public CommonResult create(@Validated @RequestBody BrandParam brand, BindingResult result) {
         CommonResult commonResult;
-        int count = brandService.createBrand(Brand);
+        int count = brandService.createBrand(brand);
         if (count == 1) {
             commonResult = CommonResult.success(count);
         } else {
@@ -51,12 +51,12 @@ public class BrandController {
 
     @ApiOperation(value = "更新品牌")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('brand:update')")
+    @PreAuthorize("hasAuthority('pms:brand:update')")
     public CommonResult update(@PathVariable("id") Long id,
-                               @Validated @RequestBody BrandParam BrandParam,
+                               @Validated @RequestBody BrandParam brandParam,
                                BindingResult result) {
         CommonResult commonResult;
-        int count = brandService.updateBrand(id, BrandParam);
+        int count = brandService.updateBrand(id, brandParam);
         if (count == 1) {
             commonResult = CommonResult.success(count);
         } else {
@@ -67,7 +67,7 @@ public class BrandController {
 
     @ApiOperation(value = "删除品牌")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('brand:delete')")
+    @PreAuthorize("hasAuthority('pms:brand:delete')")
     public CommonResult delete(@PathVariable("id") Long id) {
         int count = brandService.deleteBrand(id);
         if (count == 1) {
@@ -80,7 +80,7 @@ public class BrandController {
     @ApiOperation(value = "根据品牌名称分页获取品牌列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-//    @PreAuthorize("hasAuthority('brand:read')")
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     public CommonResult<CommonPage<Brand>> getList(@RequestParam(value = "keyword", required = false) String keyword,
                                                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                                       @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
@@ -89,14 +89,14 @@ public class BrandController {
 
     @ApiOperation(value = "根据编号查询品牌信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//    @PreAuthorize("hasAuthority('brand:read')")
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     public CommonResult<Brand> getItem(@PathVariable("id") Long id) {
         return CommonResult.success(brandService.getBrand(id));
     }
 
     @ApiOperation(value = "批量删除品牌")
     @RequestMapping(value = "/delete/batch", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('brand:delete')")
+    @PreAuthorize("hasAuthority('pms:brand:delete')")
     public CommonResult deleteBatch(@RequestParam("ids") List<Long> ids) {
         int count = brandService.deleteBrand(ids);
         if (count > 0) {
@@ -108,7 +108,7 @@ public class BrandController {
 
     @ApiOperation(value = "批量更新显示状态")
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('brand:update')")
+    @PreAuthorize("hasAuthority('pms:brand:update')")
     public CommonResult updateShowStatus(@RequestParam("ids") List<Long> ids,
                                          @RequestParam("showStatus") Integer showStatus) {
         int count = brandService.updateShowStatus(ids, showStatus);
@@ -121,7 +121,7 @@ public class BrandController {
 
     @ApiOperation(value = "批量更新厂家制造商状态")
     @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.POST)
-//    @PreAuthorize("hasAuthority('brand:update')")
+    @PreAuthorize("hasAuthority('pms:brand:update')")
     public CommonResult updateFactoryStatus(@RequestParam("ids") List<Long> ids,
                                             @RequestParam("factoryStatus") Integer factoryStatus) {
         int count = brandService.updateFactoryStatus(ids, factoryStatus);
